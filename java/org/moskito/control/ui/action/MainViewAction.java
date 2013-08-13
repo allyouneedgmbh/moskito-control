@@ -62,6 +62,12 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 		String currentApplicationName = getCurrentApplicationName(httpServletRequest);
 		if (currentApplicationName==null)
 			currentApplicationName = MoskitoControlConfiguration.getConfiguration().getDefaultApplication();
+		//if we've got no selected and no default application, lets check if there is only one.
+		if (currentApplicationName == null){
+			if (applications.size()==1){
+				currentApplicationName = applications.get(0).getName();
+			}
+		}
 		for (Application app : applications){
 			ApplicationBean bean = new ApplicationBean();
 			bean.setName(app.getName());
@@ -75,6 +81,13 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 		ComponentCountByHealthStatusBean countByStatusBean = new ComponentCountByHealthStatusBean();
 		ComponentCountAndStatusByCategoryBean countByCategoryBean = new ComponentCountAndStatusByCategoryBean();
 		Application current = repository.getApplication(currentApplicationName);
+		//add status for tv
+		if (current!=null){
+			httpServletRequest.setAttribute("tvStatus", current.getWorstHealthStatus().toString().toLowerCase());
+		}else{
+			httpServletRequest.setAttribute("tvStatus", "none");
+		}
+
 		List<CategoryBean> categoryBeans = Collections.emptyList();
 		List<ComponentHolderBean> holders = new ArrayList<ComponentHolderBean>();
 		if (current!=null){
@@ -171,7 +184,7 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 		return actionMapping.success();
 	}
 
-	private void prepareReferenceLineAndAdoptChart(Chart chart){
+	private static void prepareReferenceLineAndAdoptChart(Chart chart){
 		List<ChartLine> lines = chart.getLines();
 		try{
 			//get reference line.
@@ -217,6 +230,11 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 	}
 
 	void prepareCharts(Application current, HttpServletRequest httpServletRequest){
+		httpServletRequest.setAttribute("chartBeans", prepareChartData(current));
+
+	}
+
+	public static List<ChartBean> prepareChartData(Application current){
 		List<Chart> charts = current.getCharts();
 		LinkedList<ChartBean> beans = new LinkedList<ChartBean>();
 		for (Chart chart : charts){
@@ -228,7 +246,9 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 			HashMap<String, ChartPointBean> points = new HashMap<String, ChartPointBean>();
 			List<ChartLine> lines = chart.getLines();
 
-			System.out.println("$$$$ preparing chart "+chart+" first line has "+chart.getLines().get(0).getData().size()+" elements.");
+			try{
+				System.out.println("$$$$ preparing chart "+chart+" first line has "+chart.getLines().get(0).getData().size()+" elements.");
+			}catch(Exception ignored){}
 
 			prepareReferenceLineAndAdoptChart(chart);
 
@@ -249,6 +269,8 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 
 			//second iteration.
 			int currentLineCount = 0;
+			int skipCount = 0;
+			int presentCount =0;
 			for (ChartLine l : lines){
 				currentLineCount++;
 				bean.addLineName(l.getChartCaption());
@@ -257,9 +279,10 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 				for (AccumulatorDataItem item : items){
 					String caption = item.getCaption();
 					if (alreadyDone.contains(caption)){
-						log.warn("Skipped item " + item + " because it resolves to a already used caption " + caption);
+						log.warn("Skipped item " + item + " because it resolves to a already used caption " + caption+" in line "+l+" chart "+chart+(skipCount++));
 						continue;
 					}
+					presentCount++;
 					ChartPointBean point = points.get(caption);
 					point.addValue(item.getValue());
 					alreadyDone.add(caption);
@@ -268,6 +291,7 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 					point.ensureLength(currentLineCount);
 				}
 			}
+			System.out.println("finished "+chart+" pc: "+presentCount+", skipCount: "+skipCount);
 
 			//System.out.println("BUILT POINTS for chart" + chart.getName() + ": " + points);
 			Collection<ChartPointBean> calculatedPoints = points.values ();
@@ -312,7 +336,6 @@ public class MainViewAction extends BaseMoSKitoControlAction{
 			beans.add(bean);
 		}
 
-		httpServletRequest.setAttribute("chartBeans", beans);
-
+		return beans;
 	}
 }
