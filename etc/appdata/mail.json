@@ -1,10 +1,10 @@
 {
-    "defaultMessageSender" :"MoSKito-Control",
+    "defaultMessageSender" :"MoSKito-Control-AYN",
 	"defaultMessageSubject" : "Status changed",
-    "recipients" : ["recipient1@anotheria.net", "recipient2@anotheria.net"],
+    "recipients" : ["leon.rosenberg@anotheria.net", "vbezuhlyi@anotheria.net"],
 	"host" : "mail.anotheria.net",
     "port" : 123,
-	"user" : "moskito@anotheria.net",
-	"password" : "moskito",
+	"user" : "mskcontrol@anotheria.net",
+	"password" : "c3L0s6XHaN",
 	"debug" : true
 }
