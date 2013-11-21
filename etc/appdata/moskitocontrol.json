@@ -1,95 +1,10 @@
 {
     ayninternal: {
-        "mailNotificationEnabled" : true,
+        "mailNotificationEnabled" : false,
         "notificationsMutingTime": 60,
         
         "defaultApplication" : "AYN prod",
         "@applications": [
-            /*{
-                "name": "AYN preprod",
-                "@components": [
-                    {
-                        "name": "web01.preprod",
-                        "category": "web",
-                        "connectorType": "HTTP",
-                        "location": "http://172.21.182.35:8080/"
-                    },
-                    {
-                        "name": "web02.preprod",
-                        "category": "web",
-                        "connectorType": "HTTP",
-                        "location": "http://172.21.182.34:8080/"
-                    },
-                    {
-                        "name": "biz01.preprod",
-                        "category": "biz",
-                        "connectorType": "HTTP",
-                        "location": "http://172.21.182.33:8280/rest/"
-                    }
-                ],
-                "@charts": [
-                    {
-                        "name": "Sessions",
-                        "@lines": [
-                            {
-                                "component": "web01.preprod",
-                                "accumulator": "SessionCount Cur Absolute",
-                                "caption": "web01.preprod"
-                            },
-                            {
-                                "component": "web02.preprod",
-                                "accumulator": "SessionCount Cur Absolute",
-                                "caption": "web02.preprod"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Payments, 5 min interval",
-                        "@lines": [
-                            {
-                                "component": "web01.preprod",
-                                "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web01.preprod"
-                            },
-                            {
-                                "component": "web02.preprod",
-                                "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web02.preprod"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Payments, 1 hour interval",
-                        "@lines": [
-                            {
-                                "component": "web01.preprod",
-                                "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web01.preprod"
-                            },
-                            {
-                                "component": "web02.preprod",
-                                "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web02.preprod"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "ThreadCount",
-                        "@lines": [
-                            {
-                                "component": "web01.preprod",
-                                "accumulator": "ThreadCount",
-                                "caption": "web01.preprod"
-                            },
-                            {
-                                "component": "web02.preprod",
-                                "accumulator": "ThreadCount",
-                                "caption": "web02.preprod"
-                            }
-                        ]
-                    }
-                ]
-            },*/
             {
                 "name": "AYN prod",
                 "@components": [
@@ -234,6 +149,151 @@
                         ]
                     }
                 ]
+            },
+            {
+                "name": "AYN preprod",
+                "@components": [
+                    {
+                        "name": "web01.preprod",
+                        "category": "web",
+                        "connectorType": "HTTP",
+                        "location": "http://172.21.182.35:8080/"
+                    },
+                    {
+                        "name": "web02.preprod",
+                        "category": "web",
+                        "connectorType": "HTTP",
+                        "location": "http://172.21.182.34:8080/"
+                    },
+                    {
+                        "name": "biz01.preprod",
+                        "category": "biz",
+                        "connectorType": "HTTP",
+                        "location": "http://172.21.182.33:8280/rest/"
+                    }
+                ],
+                "@charts": [
+                    {
+                        "name": "Sessions",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "SessionCount Cur Absolute",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "SessionCount Cur Absolute",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Payments, 5 min interval",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "PaymentCounter-All 5m",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "PaymentCounter-All 5m",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Payments, 1 hour interval",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "PaymentCounter-All 1h",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "PaymentCounter-All 1h",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Time cumulated, 5 min interval",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "URL Time 5m",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "URL Time 5m",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Time cumulated, 1 hour interval",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "URL Time 1h",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "URL Time 1h",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Requests cumulated, 5 min interval",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "URL REQ 5m",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "URL REQ 5m",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Requests cumulated, 1 hour interval",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "URL REQ 1h",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "URL REQ 1h",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "ThreadCount",
+                        "@lines": [
+                            {
+                                "component": "web01.preprod",
+                                "accumulator": "ThreadCount",
+                                "caption": "web01.preprod"
+                            },
+                            {
+                                "component": "web02.preprod",
+                                "accumulator": "ThreadCount",
+                                "caption": "web02.preprod"
+                            }
+                        ]
+                    }
+                ]
             }
         ],
         "@connectors": [
@@ -244,6 +304,9 @@
         ]
     },
     test: {
+        "mailNotificationEnabled" : false,
+        "notificationsMutingTime": 60,
+
         "defaultApplication" : "AYN test",
         "@applications": [
             {
@@ -294,6 +357,46 @@
                         ]
                     },
                     {
+                        "name": "URL Time cumulated, 5 min interval",
+                        "@lines": [
+                            {
+                                "component": "web.test",
+                                "accumulator": "URL Time 5m",
+                                "caption": "web.test"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Time cumulated, 1 hour interval",
+                        "@lines": [
+                            {
+                                "component": "web.test",
+                                "accumulator": "URL Time 1h",
+                                "caption": "web.test"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Requests cumulated, 5 min interval",
+                        "@lines": [
+                            {
+                                "component": "web.test",
+                                "accumulator": "URL REQ 5m",
+                                "caption": "web.test"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "URL Requests cumulated, 1 hour interval",
+                        "@lines": [
+                            {
+                                "component": "web.test",
+                                "accumulator": "URL REQ 1h",
+                                "caption": "web.test"
+                            }
+                        ]
+                    },
+                    {
                         "name": "ThreadCount",
                         "@lines": [
                             {
@@ -332,7 +435,7 @@
         "checkPeriodInSeconds": 30,
         "threadPoolSize": 10,
         "timeoutInSeconds": 60,
-        "enabled" : false
+        "enabled" : true
     }
 
 }
