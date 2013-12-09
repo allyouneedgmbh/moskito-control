@@ -2,7 +2,7 @@
     ayninternal: {
         "mailNotificationEnabled" : false,
         "notificationsMutingTime": 60,
-        
+
         "defaultApplication" : "AYN prod",
         "@applications": [
             {
