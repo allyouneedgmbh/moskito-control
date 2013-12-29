@@ -2,14 +2,19 @@ package org.moskito.control.connectors.parsers;
 
 import net.anotheria.moskito.core.threshold.ThresholdStatus;
 import org.moskito.control.connectors.response.ConnectorAccumulatorResponse;
+import org.moskito.control.connectors.response.ConnectorAccumulatorsNamesResponse;
 import org.moskito.control.connectors.response.ConnectorStatusResponse;
 import org.moskito.control.connectors.response.ConnectorThresholdsResponse;
-import org.moskito.control.core.accumulator.AccumulatorDataItem;
 import org.moskito.control.core.HealthColor;
+import org.moskito.control.core.accumulator.AccumulatorDataItem;
 import org.moskito.control.core.status.Status;
 import org.moskito.control.core.threshold.ThresholdDataItem;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * JSON Connector Response parser. Supports version1 of the protocol.
@@ -70,6 +75,18 @@ public class V1Parser implements ConnectorResponseParser{
         }
 
         return new ConnectorThresholdsResponse(items);
+    }
+
+    @Override
+    public ConnectorAccumulatorsNamesResponse parseAccumulatorsNamesResponse(Map serverReply) {
+        List<String> names = new ArrayList<String>();
+        List<Map> reply = (List) serverReply.get("reply");
+
+        for (Map replyItem : reply) {
+            names.add((String)replyItem.get("name"));
+        }
+
+        return new ConnectorAccumulatorsNamesResponse(names);
     }
 
 }
