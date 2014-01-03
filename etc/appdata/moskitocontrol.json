@@ -337,26 +337,6 @@
                         ]
                     },
                     {
-                        "name": "Payments, 5 min interval",
-                        "@lines": [
-                            {
-                                "component": "web.test",
-                                "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web.test"
-                            }
-                        ]
-                    },
-                    {
-                        "name": "Payments, 1 hour interval",
-                        "@lines": [
-                            {
-                                "component": "web.test",
-                                "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web.test"
-                            }
-                        ]
-                    },
-                    {
                         "name": "URL Time cumulated, 5 min interval",
                         "@lines": [
                             {
@@ -402,6 +382,26 @@
                             {
                                 "component": "web.test",
                                 "accumulator": "ThreadCount",
+                                "caption": "web.test"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Payments, 5 min interval",
+                        "@lines": [
+                            {
+                                "component": "biz.test",
+                                "accumulator": "PaymentCounter-All 5m",
+                                "caption": "web.test"
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Payments, 1 hour interval",
+                        "@lines": [
+                            {
+                                "component": "biz.test",
+                                "accumulator": "PaymentCounter-All 1h",
                                 "caption": "web.test"
                             }
                         ]
