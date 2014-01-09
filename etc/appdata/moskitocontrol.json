@@ -47,14 +47,9 @@
                         "name": "Payments, 5 min interval",
                         "@lines": [
                             {
-                                "component": "web01.prod",
+                                "component": "biz01.prod",
                                 "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web01.prod"
-                            },
-                            {
-                                "component": "web02.prod",
-                                "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web02.prod"
+                                "caption": "biz01.prod"
                             }
                         ]
                     },
@@ -62,14 +57,9 @@
                         "name": "Payments, 1 hour interval",
                         "@lines": [
                             {
-                                "component": "web01.prod",
+                                "component": "biz01.prod",
                                 "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web01.prod"
-                            },
-                            {
-                                "component": "web02.prod",
-                                "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web02.prod"
+                                "caption": "biz01.prod"
                             }
                         ]
                     },
@@ -192,14 +182,9 @@
                         "name": "Payments, 5 min interval",
                         "@lines": [
                             {
-                                "component": "web01.preprod",
+                                "component": "biz01.preprod",
                                 "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web01.preprod"
-                            },
-                            {
-                                "component": "web02.preprod",
-                                "accumulator": "PaymentCounter-All 5m",
-                                "caption": "web02.preprod"
+                                "caption": "biz01.preprod"
                             }
                         ]
                     },
@@ -207,14 +192,9 @@
                         "name": "Payments, 1 hour interval",
                         "@lines": [
                             {
-                                "component": "web01.preprod",
+                                "component": "biz01.preprod",
                                 "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web01.preprod"
-                            },
-                            {
-                                "component": "web02.preprod",
-                                "accumulator": "PaymentCounter-All 1h",
-                                "caption": "web02.preprod"
+                                "caption": "biz01.preprod"
                             }
                         ]
                     },
