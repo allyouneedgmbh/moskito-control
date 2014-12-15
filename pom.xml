@@ -11,8 +11,9 @@
 	<artifactId>moskito-control</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.1-SNAPSHOT</version>
-	<name>MoSKito Control</name>
-    <dependencies>
+	<name>MoSKito Control (allyouneed)</name>
+
+	<dependencies>
 		<!-- logging -->
 		<dependency>
 		    <groupId>org.slf4j</groupId>
@@ -36,7 +37,7 @@
 		<dependency>
 			<groupId>net.anotheria</groupId>
 			<artifactId>moskito-webui</artifactId>
-			<version>2.4.1</version>
+			<version>2.4.2</version>
 		</dependency>
 		<dependency>
 			<groupId>net.anotheria</groupId>
@@ -88,12 +89,6 @@
 	</dependencies>
 
 	<build>
-<!--		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<filtering>true</filtering>
-			</resource>
-		</resources> -->
 		<plugins>
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
